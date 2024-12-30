@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
             call_help();
         }
         else if(argv[2]==NULL)
-        {
+        {   
             printf("ERROR: Required Arguments are missing\n");
             printf("Type '--help' to get details\n");
         }
@@ -26,9 +26,13 @@ int main(int argc, char *argv[])
         {
             if (read_and_validate_args(argv, &mp3Info) == m_success)
             {
+                if(open_file(&mp3Info)==m_success)
+                {
+                   
+                }
             }
             else
-            {
+            {   
                 printf("ERROR: Required Arguments are missing\n");
                 printf("Type '--help' to get details\n");
             }

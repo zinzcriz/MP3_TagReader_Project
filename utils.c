@@ -34,10 +34,11 @@ OperationType check_operation_type(char *argv[])
 Status read_and_validate_args(char *argv[], MusicInfo *mp3Info)
 {
     if (strcmp(argv[1], "-v") == 0)
-    {
+    {   
         if (strstr(argv[2], ".mp3") != NULL)
-        {
+        {   
             mp3Info->mp3_file_name = argv[2];
+            return m_success;
         }
         else
         {
@@ -61,4 +62,15 @@ Status read_and_validate_args(char *argv[], MusicInfo *mp3Info)
             return m_failure;
         }
     }
+}
+
+Status open_file(MusicInfo *mp3Info)
+{
+    mp3Info->fptr_mp3_file=fopen(mp3Info->mp3_file_name,"r+");
+    if(mp3Info->fptr_mp3_file==NULL)
+    {
+        printf("Could not open %s file\n",mp3Info->mp3_file_name);
+        return m_failure;
+    }
+    return m_success;
 }
