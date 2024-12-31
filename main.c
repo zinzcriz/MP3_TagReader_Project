@@ -26,9 +26,9 @@ int main(int argc, char *argv[])
         {
             if (read_and_validate_args(argv, &mp3Info) == m_success)
             {
-                if(open_file(&mp3Info)==m_success)
+                if(call_MP3view(&mp3Info)==m_success)
                 {
-                   
+                    print_info(&mp3Info);
                 }
             }
             else
