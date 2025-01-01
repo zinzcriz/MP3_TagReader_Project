@@ -177,3 +177,14 @@ Status print_info(MusicInfo *mp3Info)
     printf("COMMENT           :\t%s\n",mp3Info->mp3_file_comm);
     printf("----------------------------------------------------------------------\n");
 }
+
+Status open_file_edit(MusicInfo *mp3Info)
+{
+    mp3Info->fptr_mp3_file = fopen(mp3Info->mp3_file_name, "r+");
+    if (mp3Info->fptr_mp3_file == NULL)
+    {
+        printf("Could not open %s file\n", mp3Info->mp3_file_name);
+        return m_failure;
+    }
+    return m_success;
+}

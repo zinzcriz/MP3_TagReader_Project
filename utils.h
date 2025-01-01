@@ -35,7 +35,12 @@ Status find_year(MusicInfo *mp3Info);
 Status find_con(MusicInfo *mp3Info);
 Status find_comm(MusicInfo *mp3Info);
 Status print_info(MusicInfo *mp3Info);
-Status mp3edit(MusicInfo *mp3Info);
+
+
+Status call_mp3edit(char *argv[], MusicInfo *mp3Info);
+Status open_file_edit(MusicInfo *mp3Info);
+Status edit_title(MusicInfo *mp3Info);
+Status edit_artist(MusicInfo *mp3Info);
 
 
 #endif
