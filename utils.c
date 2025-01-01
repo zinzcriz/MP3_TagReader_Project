@@ -31,7 +31,7 @@ OperationType check_operation_type(char *argv[])
     }
 }
 
-Status read_and_validate_args(char *argv[], MusicInfo *mp3Info)
+Status read_and_validate_args(int argc,char *argv[], MusicInfo *mp3Info)
 {
     if (strcmp(argv[1], "-v") == 0)
     {
@@ -48,10 +48,35 @@ Status read_and_validate_args(char *argv[], MusicInfo *mp3Info)
     else if (strcmp(argv[1], "-e") == 0)
     {
         if (strcmp(argv[2], "-t") == 0 || strcmp(argv[2], "-a") == 0 || strcmp(argv[2], "-A") == 0 || strcmp(argv[2], "-m") == 0 || strcmp(argv[2], "-y") == 0 || strcmp(argv[2], "-c") == 0)
-        {
-            if (strstr(argv[3], ".mp3") != NULL)
+        {   
+            int i=3;
+            while(strstr(argv[i], ".mp3") == NULL)
             {
-                mp3Info->mp3_file_name = argv[2];
+               if(i==3)
+               {
+                strcpy(mp3Info->temp,argv[i]);
+               }
+               else{
+               strcat(mp3Info->temp," ");
+               strcat(mp3Info->temp,argv[i]);
+               }
+               i++;
+               if(i==argc)
+               {
+                return m_failure;
+               }
+            }
+            if(strstr(argv[3], ".mp3") != NULL)
+            {
+                return m_failure;
+            }
+            if (strstr(argv[i], ".mp3") != NULL)
+            {
+                mp3Info->mp3_file_name = argv[i];
+                printf("%s\n",mp3Info->temp);
+                i=strlen(mp3Info->temp);
+                printf("%d\n",i);
+                return m_success;
             }
             else
             {
