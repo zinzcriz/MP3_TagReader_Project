@@ -14,6 +14,7 @@ Status call_MP3view(MusicInfo *mp3Info)
             find_year(mp3Info);
             find_con(mp3Info);
             find_comm(mp3Info);
+            fclose(mp3Info->fptr_mp3_file);
             return m_success;
         }
     }
@@ -151,3 +152,5 @@ Status find_comm(MusicInfo *mp3Info)
         strcpy(mp3Info->mp3_file_comm,"Not found");
     }
 }
+
+

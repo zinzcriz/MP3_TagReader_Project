@@ -41,6 +41,7 @@ int main(int argc, char *argv[])
         {
             if (read_and_validate_args(argc,argv, &mp3Info) == m_success)
             {
+                call_mp3edit(argv,&mp3Info);
                 
             }
             else
