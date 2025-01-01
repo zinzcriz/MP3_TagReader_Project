@@ -10,9 +10,9 @@ void call_help()
     printf("\t2.3 -A -> to edit album name\n");
     printf("\t2.4 -y -> to edit year\n");
     printf("\t2.5 -m -> to edit content\n");
-    printf("\t2.6 -m -> to edit comment\n");
+    printf("\t2.6 -c -> to edit comment\n");
     printf("eg: ./a.out -v sample.mp3\n");
-    printf("    ./a.out -e -t sample.mp3\n");
+    printf("    ./a.out -e -t <changing text> sample.mp3\n");
 }
 
 OperationType check_operation_type(char *argv[])
@@ -87,6 +87,9 @@ Status read_and_validate_args(int argc,char *argv[], MusicInfo *mp3Info)
         {
             return m_failure;
         }
+    }
+    else{
+        return m_failure;
     }
 }
 
