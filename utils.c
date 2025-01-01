@@ -73,9 +73,9 @@ Status read_and_validate_args(int argc,char *argv[], MusicInfo *mp3Info)
             if (strstr(argv[i], ".mp3") != NULL)
             {
                 mp3Info->mp3_file_name = argv[i];
-                printf("%s\n",mp3Info->temp);
-                i=strlen(mp3Info->temp);
-                printf("%d\n",i);
+                //printf("%s\n",mp3Info->temp);
+                //i=strlen(mp3Info->temp);
+                //printf("%d\n",i);
                 return m_success;
             }
             else
