@@ -41,6 +41,10 @@ Status call_mp3edit(char *argv[], MusicInfo *mp3Info);
 Status open_file_edit(MusicInfo *mp3Info);
 Status edit_title(MusicInfo *mp3Info);
 Status edit_artist(MusicInfo *mp3Info);
+Status edit_alb(MusicInfo *mp3Info);
+Status edit_year(MusicInfo *mp3Info);
+Status edit_con(MusicInfo *mp3Info);
+Status edit_comm(MusicInfo *mp3Info);
 
 
 #endif
