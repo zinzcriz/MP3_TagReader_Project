@@ -11,7 +11,7 @@ typedef struct _MusicInfo
     char *mp3_file_name;
     FILE *fptr_mp3_file;
     
-    char temp[100];
+    char temp[50];
     char mp3_file_title[50];
     char mp3_file_artist[50];
     char mp3_file_alb[50];
