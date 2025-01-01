@@ -65,9 +65,9 @@ Status read_and_validate_args(char *argv[], MusicInfo *mp3Info)
     }
 }
 
-Status open_file(MusicInfo *mp3Info)
+Status open_file_view(MusicInfo *mp3Info)
 {
-    mp3Info->fptr_mp3_file = fopen(mp3Info->mp3_file_name, "r+");
+    mp3Info->fptr_mp3_file = fopen(mp3Info->mp3_file_name, "r");
     if (mp3Info->fptr_mp3_file == NULL)
     {
         printf("Could not open %s file\n", mp3Info->mp3_file_name);
@@ -138,138 +138,6 @@ Status find_tag(const char *data, FILE *fp)
     return m_success;
 }
 
-Status find_title(MusicInfo *mp3Info)
-{
-    if(find_tag("TIT2",mp3Info->fptr_mp3_file)==m_success)
-    {
-        int size;
-        fread(&size,1,4,mp3Info->fptr_mp3_file);
-        size=size-1;
-        //printf("%d\n",size);
-        char buffer[size];
-        fread(buffer,1,size,mp3Info->fptr_mp3_file);
-        buffer[size]='\0';
-        //printf("%s\n",buffer);
-        strcpy(mp3Info->mp3_file_title,buffer);
-        fseek(mp3Info->fptr_mp3_file,0,SEEK_SET);
-        return m_success;
-    }
-    else{
-        strcpy(mp3Info->mp3_file_title,"Not found");
-        //printf("Some error\n");
-    }
-}
-
-Status find_artist(MusicInfo *mp3Info)
-{
-    if(find_tag("TPE1",mp3Info->fptr_mp3_file)==m_success)
-    {
-        int size;
-        fread(&size,1,4,mp3Info->fptr_mp3_file);
-        size=size-1;
-        //printf("%d\n",size);
-        char buffer[size];
-        fread(buffer,1,size,mp3Info->fptr_mp3_file);
-        buffer[size]='\0';
-        //printf("%s\n",buffer);
-        strcpy(mp3Info->mp3_file_artist,buffer);
-        fseek(mp3Info->fptr_mp3_file,0,SEEK_SET);
-        return m_success;
-    }
-    else
-    {
-        strcpy(mp3Info->mp3_file_artist,"Not found");
-    }
-}
-
-Status find_alb(MusicInfo *mp3Info)
-{
-    if(find_tag("TALB",mp3Info->fptr_mp3_file)==m_success)
-    {
-        int size;
-        fread(&size,1,4,mp3Info->fptr_mp3_file);
-        size=size-1;
-        //printf("%d\n",size);
-        char buffer[size];
-        fread(buffer,1,size,mp3Info->fptr_mp3_file);
-        buffer[size]='\0';
-        //printf("%s\n",buffer);
-        strcpy(mp3Info->mp3_file_alb,buffer);
-        fseek(mp3Info->fptr_mp3_file,0,SEEK_SET);
-        return m_success;
-    }
-    else
-    {
-        strcpy(mp3Info->mp3_file_alb,"Not found");
-    }
-}
-
-Status find_year(MusicInfo *mp3Info)
-{
-    if(find_tag("TYER",mp3Info->fptr_mp3_file)==m_success)
-    {
-        int size;
-        fread(&size,1,4,mp3Info->fptr_mp3_file);
-        size=size-1;
-        //printf("%d\n",size);
-        char buffer[size];
-        fread(buffer,1,size,mp3Info->fptr_mp3_file);
-        buffer[size]='\0';
-        //printf("%s\n",buffer);
-        strcpy(mp3Info->mp3_file_year,buffer);
-        //printf("%s\n",mp3Info->mp3_file_year);
-        fseek(mp3Info->fptr_mp3_file,0,SEEK_SET);
-        return m_success;
-    }
-    else
-    {
-        strcpy(mp3Info->mp3_file_year,"NULL");
-    }
-}
-
-Status find_con(MusicInfo *mp3Info)
-{
-    if(find_tag("TCON",mp3Info->fptr_mp3_file)==m_success)
-    {
-        int size;
-        fread(&size,1,4,mp3Info->fptr_mp3_file);
-        size=size-1;
-        //printf("%d\n",size);
-        char buffer[size];
-        fread(buffer,1,size,mp3Info->fptr_mp3_file);
-        buffer[size]='\0';
-        //printf("%s\n",buffer);
-        strcpy(mp3Info->mp3_file_con,buffer);
-        fseek(mp3Info->fptr_mp3_file,0,SEEK_SET);
-        return m_success;
-    }
-    else
-    {
-        strcpy(mp3Info->mp3_file_con,"Not found");
-    }
-}
-
-Status find_comm(MusicInfo *mp3Info)
-{
-    if(find_tag("COMM",mp3Info->fptr_mp3_file)==m_success)
-    {
-        int size;
-        fread(&size,1,4,mp3Info->fptr_mp3_file);
-        size=size-1;
-        //printf("%d\n",size);
-        char buffer[size];
-        fread(buffer,1,size,mp3Info->fptr_mp3_file);
-        buffer[size]='\0';
-        //printf("%s\n",buffer);
-        strcpy(mp3Info->mp3_file_comm,buffer);
-        fseek(mp3Info->fptr_mp3_file,0,SEEK_SET);
-        return m_success;
-    }
-    else
-    {
-        strcpy(mp3Info->mp3_file_comm,"Not found");
-    }
-}
 
 Status print_info(MusicInfo *mp3Info)
 {
