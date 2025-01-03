@@ -116,7 +116,7 @@ Status find_con(MusicInfo *mp3Info)
         int size;
         fread(&size,1,4,mp3Info->fptr_mp3_file);
         size=size-1;
-        //printf("%d\n",size);
+        //printf("Size:%d\n",size);
         char buffer[size];
         fread(buffer,1,size,mp3Info->fptr_mp3_file);
         buffer[size]='\0';

@@ -130,19 +130,25 @@ Status find_tag(const char *data, FILE *fp)
     char alb;
     const char *d = data;
     int count = 1;
+    int i=0;
     while (count!=0)
     {
-        fread(&alb,1,1,fp);
+        //fread(&alb,1,1,fp);
+        alb=fgetc(fp);
+        i++;
         if (alb == d[0])
         {
-            fread(&alb,1,1,fp);
+            //fread(&alb,1,1,fp);
+            alb=fgetc(fp);
             if (alb == d[1])
             {
-                fread(&alb,1,1,fp);
+                //fread(&alb,1,1,fp);
+                alb=fgetc(fp);
                 if (alb == d[2])
                 {
 
-                    fread(&alb,1,1,fp);
+                    //fread(&alb,1,1,fp);
+                    alb=fgetc(fp);
                     if (alb == d[3])
                     {
 
@@ -150,16 +156,19 @@ Status find_tag(const char *data, FILE *fp)
                         /*char buff[4];
                         fread(buff,1,4,fp);
                         printf("%s\n",buff);*/
+                        //printf("%d\n",i);
                         fseek(fp,ftell(fp)+3,SEEK_SET);
                         count = 0;
                     }
                 }
             }
         }
-        else if (alb == EOF)
+        else if(alb == EOF & i>200)
         {
             count = 0;
-            printf("Item not found\n");
+            //printf("%d",i);
+            //printf("Char is %d\n",alb);
+            printf("%s not found\n",data);
             return m_failure;
         }
     }
