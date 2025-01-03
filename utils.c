@@ -163,7 +163,7 @@ Status find_tag(const char *data, FILE *fp)
                 }
             }
         }
-        else if(alb == EOF & i>200)
+        else if(alb == EOF && i>200)
         {
             count = 0;
             //printf("%d",i);

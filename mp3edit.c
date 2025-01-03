@@ -72,7 +72,7 @@ Status edit_artist(MusicInfo *mp3Info)
             char buffer[size];
             strcpy(buffer, mp3Info->temp);
             //buffer[size] = '\0';
-            if(fwrite(buffer, 1, size, mp3Info->fptr_mp3_file)<=0)
+            if(fwrite(buffer, 1, size, mp3Info->fptr_mp3_file)!=size)
             {
                 printf("Error in changing Artist Name\n");
                 return m_failure;
