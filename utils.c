@@ -15,6 +15,7 @@ void call_help()
     printf("    ./a.out -e -t <changing text> sample.mp3\n");
 }
 
+//Function to check opertaion type(view/edit)
 OperationType check_operation_type(char *argv[])
 {
     if (strcmp(argv[1], "-v") == 0)
@@ -31,6 +32,7 @@ OperationType check_operation_type(char *argv[])
     }
 }
 
+//Function to read and validate Arguments
 Status read_and_validate_args(int argc,char *argv[], MusicInfo *mp3Info)
 {
     if (strcmp(argv[1], "-v") == 0)
@@ -93,6 +95,7 @@ Status read_and_validate_args(int argc,char *argv[], MusicInfo *mp3Info)
     }
 }
 
+//Function to open files for viewing 
 Status open_file_view(MusicInfo *mp3Info)
 {
     mp3Info->fptr_mp3_file = fopen(mp3Info->mp3_file_name, "r");
@@ -163,7 +166,7 @@ Status find_tag(const char *data, FILE *fp)
                 }
             }
         }
-        else if(alb == EOF && i>200)
+        else if(alb == EOF && i>250)
         {
             count = 0;
             //printf("%d",i);

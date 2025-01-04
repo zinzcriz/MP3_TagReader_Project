@@ -49,6 +49,11 @@ Status call_mp3edit(char *argv[], MusicInfo *mp3Info)
                     flag=1;
                 } 
             }
+            if(flag==1)
+            {
+                fclose(mp3Info->fptr_mp3_file);
+                return m_success;
+            }
         }
     }
 }
