@@ -33,6 +33,9 @@ OperationType check_operation_type(char *argv[])
 }
 
 //Function to read and validate Arguments
+/*Checks whether '-v' or '-e' is passed with arguments.If '-e' we check for what type of edit.Then we collect arguments
+till secondlast argument as changing text and store it in a char array named temp*/
+
 Status read_and_validate_args(int argc,char *argv[], MusicInfo *mp3Info)
 {
     if (strcmp(argv[1], "-v") == 0)
@@ -107,6 +110,9 @@ Status open_file_view(MusicInfo *mp3Info)
     return m_success;
 }
 
+//Function to check whether an mp3 file is ID3
+//Its encoded in the first 3 bytes of mp3
+//we also check for its version which is 3 encoded in subsequent two bytes
 Status check_ID3(MusicInfo *mp3Info)
 {
     char buffer[3];
@@ -125,6 +131,11 @@ Status check_ID3(MusicInfo *mp3Info)
     }
     return m_failure;
 }
+
+/*In this function, we search for a tag which is passed as string argument.This function read mp3 file
+char by char and compare it with the first letter of string.If it is true enters into a nested if
+condition and checks remaining charactrs.If a tag is found in file it moves forward 3 bytes of file 
+from current position.*/
 
 Status find_tag(const char *data, FILE *fp)
 {
@@ -178,6 +189,7 @@ Status find_tag(const char *data, FILE *fp)
     return m_success;
 }
 
+//Function for printing info
 
 Status print_info(MusicInfo *mp3Info)
 {
@@ -192,6 +204,8 @@ Status print_info(MusicInfo *mp3Info)
     printf("COMMENT           :\t%s\n",mp3Info->mp3_file_comm);
     printf("----------------------------------------------------------------------\n");
 }
+
+//Function to open files for editing
 
 Status open_file_edit(MusicInfo *mp3Info)
 {
