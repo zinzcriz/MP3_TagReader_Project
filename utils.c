@@ -1,5 +1,6 @@
 #include "utils.h"
 
+//Function to print help
 void call_help()
 {
     printf("------------------HELP MENU------------------\n");
@@ -165,12 +166,6 @@ Status find_tag(const char *data, FILE *fp)
                     alb=fgetc(fp);
                     if (alb == d[3])
                     {
-
-                        //fseek(fp,ftell(fp)-4,SEEK_SET);
-                        /*char buff[4];
-                        fread(buff,1,4,fp);
-                        printf("%s\n",buff);*/
-                        //printf("%d\n",i);
                         fseek(fp,ftell(fp)+3,SEEK_SET);
                         count = 0;
                     }
