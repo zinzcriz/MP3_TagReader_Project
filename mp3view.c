@@ -1,5 +1,6 @@
 #include "utils.h"
 
+//Function to call find functions one by one
 Status call_MP3view(MusicInfo *mp3Info)
 {
     if(open_file_view(mp3Info)==m_success)
@@ -19,6 +20,12 @@ Status call_MP3view(MusicInfo *mp3Info)
         }
     }
 }
+
+/*In every find function we call find tag function to know whether that particular tag is present in 
+mp3 file or not.If present find_tag function moves the file pointer by 3 bytes and returns.This is because
+Subsequent 4 bytes contain the size for tag information.After size is read a char array is created tag info is 
+read into it.*/
+
 
 Status find_title(MusicInfo *mp3Info)
 {

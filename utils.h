@@ -6,6 +6,7 @@
 #include<stdlib.h>
 
 
+
 typedef struct _MusicInfo
 {  
     char *mp3_file_name;
@@ -18,6 +19,7 @@ typedef struct _MusicInfo
     char mp3_file_comm[50];
     char mp3_file_con[50];
     char mp3_file_year[4];
+    
     
 }MusicInfo;
 

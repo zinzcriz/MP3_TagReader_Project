@@ -1,5 +1,7 @@
 #include "utils.h"
 int flag = 0;
+
+//Function to call edit functions according to the user input
 Status call_mp3edit(char *argv[], MusicInfo *mp3Info)
 {
     if (open_file_edit(mp3Info) == m_success)
@@ -57,6 +59,12 @@ Status call_mp3edit(char *argv[], MusicInfo *mp3Info)
         }
     }
 }
+
+/*In every edit function we call find tag function to know whether that particular tag is present in 
+mp3 file or not.If present find_tag function moves the file pointer by 3 bytes and returns.This is because
+Subsequent 4 bytes contain the size for tag information.After size is read it checks whether changing text 
+passed by user is greater than this size.If not it writes changing text stored in temp array into the file*/
+
 
 Status edit_artist(MusicInfo *mp3Info)
 {
