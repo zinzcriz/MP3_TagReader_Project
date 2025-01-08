@@ -12,8 +12,8 @@ void call_help()
     printf("\t2.4 -y -> to edit year\n");
     printf("\t2.5 -m -> to edit content\n");
     printf("\t2.6 -c -> to edit comment\n");
-    printf("eg: ./a.out -v sample.mp3\n");
-    printf("    ./a.out -e -t <changing text> sample.mp3\n");
+    printf("eg: ./output -v sample.mp3\n");
+    printf("    ./output -e -t <changing text> sample.mp3\n");
 }
 
 //Function to check opertaion type(view/edit)
