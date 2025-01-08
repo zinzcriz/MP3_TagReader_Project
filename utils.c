@@ -79,9 +79,6 @@ Status read_and_validate_args(int argc,char *argv[], MusicInfo *mp3Info)
             if (strstr(argv[i], ".mp3") != NULL)
             {
                 mp3Info->mp3_file_name = argv[i];
-                //printf("%s\n",mp3Info->temp);
-                //i=strlen(mp3Info->temp);
-                //printf("%d\n",i);
                 return m_success;
             }
             else
@@ -140,8 +137,6 @@ from current position.*/
 
 Status find_tag(const char *data, FILE *fp)
 {
-    // char alb[1];
-    //printf("Hai3\n");
     char alb;
     const char *d = data;
     int count = 1;
@@ -175,8 +170,6 @@ Status find_tag(const char *data, FILE *fp)
         else if(alb == EOF && i>250)
         {
             count = 0;
-            //printf("%d",i);
-            //printf("Char is %d\n",alb);
             printf("%s not found\n",data);
             return m_failure;
         }

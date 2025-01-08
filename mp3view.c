@@ -7,9 +7,7 @@ Status call_MP3view(MusicInfo *mp3Info)
     {
         if(check_ID3(mp3Info)==m_success)
         {   
-            //printf("Hai1\n");
             find_title(mp3Info);
-            //printf("%s\n",mp3Info->mp3_file_title);
             find_artist(mp3Info);
             find_alb(mp3Info);
             find_year(mp3Info);
