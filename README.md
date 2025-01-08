@@ -9,7 +9,7 @@ C program to read information tags in an MP3 file.This program is only compatibl
 ```
 git clone https://github.com/zinzcriz/MP3_TagReader_Project.git
 ```
-- Copy and paste the mp3 file from 'Music Files' folder.Then run following codes:
+- Copy and paste the mp3 file from 'Music Files' folder. Then run following codes:
 
      1. To view tag information in an mp3 file
 
@@ -40,4 +40,6 @@ git clone https://github.com/zinzcriz/MP3_TagReader_Project.git
      ```
      ./output -e -c <MP3FileName>
      ```
+
+This program only works with mp3 files with version ID3V3.2.
 
